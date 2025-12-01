@@ -1,0 +1,16 @@
+{
+  "name": "backspace.com.br",
+  "version": "1.0.0",
+  "description": "Here I'll implement the knowledge gained in the curso.dev",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
