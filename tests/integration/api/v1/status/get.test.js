@@ -2,8 +2,8 @@ test("GET to /api/v1/status should return 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/status");
   const responseBody = await response.json();
 
-  realUpdatedAt = responseBody.update_at;
-  parsedUpdatedAt = new Date(responseBody.update_at).toISOString();
+  const realUpdatedAt = responseBody.updated_at;
+  const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
 
   expect(response.status).toBe(200);
   expect(responseBody.dependencies.database.version).toBeDefined();
@@ -16,9 +16,9 @@ test("GET to /api/v1/status should return 200", async () => {
   expect(realUpdatedAt).toEqual(parsedUpdatedAt);
 });
 
-test("Test de SQL Injection", async () => {
+test("Test SQL Injection", async () => {
   const response = await fetch(
-    "http://localhost:3000/api/v1/status?databaseName='; SELECT pg_sleep(10); --"
+    "http://localhost:3000/api/v1/status?databaseName='; SELECT pg_sleep(10); --",
   );
   const responseBody = await response.json();
 });

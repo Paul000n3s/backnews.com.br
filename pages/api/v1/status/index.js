@@ -7,7 +7,7 @@ async function status(request, response) {
 
   const maxConnectionsResult = await database.query("SHOW max_connections;");
   const databaseMaxConnection = parseInt(
-    maxConnectionsResult.rows[0].max_connections
+    maxConnectionsResult.rows[0].max_connections,
   );
 
   const databaseName = process.env.POSTGRES_DB;
@@ -20,7 +20,7 @@ async function status(request, response) {
     databaseOpenedConnections.rows[0].count;
 
   response.status(200).json({
-    update_at: updatedAt,
+    updated_at: updatedAt,
     dependencies: {
       database: {
         max_connections: databaseMaxConnection,
